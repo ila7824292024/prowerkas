@@ -1,1 +1,592 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Дипломная работа Курбанова Ильи | Breaking Code</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
 
+        :root {
+            --blue: #1a75ff;
+            --dark-blue: #0052cc;
+            --yellow: #ffcc00;
+            --green: #00cc66;
+            --red: #ff3333;
+            --dark: #0d0d0d;
+            --gray: #1a1a1a;
+            --light-gray: #333333;
+        }
+
+        body {
+            background-color: var(--dark);
+            color: #fff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+
+        /* Химические эффекты */
+        .lab-effects {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .bubble {
+            position: absolute;
+            background: rgba(26, 117, 255, 0.1);
+            border-radius: 50%;
+            animation: float 15s infinite linear;
+        }
+
+        .bubble:nth-child(1) {
+            width: 100px;
+            height: 100px;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+
+        .bubble:nth-child(2) {
+            width: 150px;
+            height: 150px;
+            top: 60%;
+            left: 80%;
+            animation-delay: 5s;
+        }
+
+        .bubble:nth-child(3) {
+            width: 80px;
+            height: 80px;
+            top: 80%;
+            left: 20%;
+            animation-delay: 10s;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
+            100% { transform: translateY(0) rotate(360deg); }
+        }
+
+        /* Дипломная надпись */
+        .diploma-header {
+            background: var(--gray);
+            padding: 15px 0;
+            text-align: center;
+            border-bottom: 2px solid var(--blue);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .diploma-header h1 {
+            font-size: 1.8rem;
+            color: var(--yellow);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .diploma-header p {
+            color: #ccc;
+            margin-top: 5px;
+            font-size: 1rem;
+        }
+
+        /* Hero секция */
+        .hero {
+            background: linear-gradient(rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.7)), 
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
+            background-size: cover;
+            background-position: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            background: var(--red);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 30px;
+            font-weight: bold;
+            margin-bottom: 20px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        h1 {
+            font-size: 4rem;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .blue-text {
+            color: var(--blue);
+        }
+
+        .hero-subtitle {
+            font-size: 1.8rem;
+            margin-bottom: 20px;
+            color: var(--yellow);
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            color: #ccc;
+        }
+
+        /* Кнопки */
+        .cta-button {
+            background: linear-gradient(45deg, var(--blue), var(--green));
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(26, 117, 255, 0.4);
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            text-decoration: none;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 117, 255, 0.6);
+        }
+
+        /* Секции */
+        section {
+            padding: 80px 0;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            text-align: center;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            font-size: 1.2rem;
+            margin-bottom: 50px;
+            color: #ccc;
+        }
+
+        /* Проекты */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .project-card {
+            background: var(--gray);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            position: relative;
+            border: 1px solid var(--light-gray);
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--red);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 3px;
+            font-weight: bold;
+            z-index: 2;
+        }
+
+        .project-image {
+            height: 200px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .project-content {
+            padding: 20px;
+        }
+
+        .project-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--yellow);
+        }
+
+        .project-card p {
+            margin-bottom: 15px;
+            color: #ccc;
+        }
+
+        .project-button {
+            background: var(--blue);
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            text-decoration: none;
+        }
+
+        .project-button:hover {
+            background: var(--dark-blue);
+        }
+
+        /* Обо мне */
+        .about {
+            background: var(--gray);
+        }
+
+        .about-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: center;
+        }
+
+        .about-image {
+            height: 400px;
+            background: url('https://images.unsplash.com/photo-1563207153-f403bf289096?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80') center/cover;
+            border-radius: 10px;
+        }
+
+        .about-text h2 {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .about-text p {
+            margin-bottom: 20px;
+            color: #ccc;
+        }
+
+        .skills {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .skill {
+            background: var(--dark);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            border: 1px solid var(--light-gray);
+        }
+
+        /* Контакты */
+        .contact {
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.1rem;
+        }
+
+        .contact-icon {
+            font-size: 1.5rem;
+            color: var(--blue);
+        }
+
+        /* Футер */
+        footer {
+            background: var(--gray);
+            padding: 40px 0;
+            text-align: center;
+            border-top: 1px solid var(--light-gray);
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+
+        .footer-links a {
+            color: #ccc;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: var(--blue);
+        }
+
+        .copyright {
+            margin-top: 20px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Адаптивность */
+        @media (max-width: 768px) {
+            .diploma-header h1 {
+                font-size: 1.3rem;
+            }
+            
+            h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.3rem;
+            }
+            
+            .about-content {
+                grid-template-columns: 1fr;
+            }
+            
+            .about-image {
+                height: 300px;
+            }
+            
+            .contact-info {
+                gap: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Химическая лаборатория -->
+    <div class="lab-effects">
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+        <div class="bubble"></div>
+    </div>
+
+    <!-- Заголовок дипломной работы -->
+    <header class="diploma-header">
+        <div class="container">
+            <h1>Дипломная работа Курбанова Ильи</h1>
+            <p>Тема: "Разработка веб-портфолио в стиле Breaking Bad"</p>
+        </div>
+    </header>
+
+    <!-- Hero секция -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-badge">ВЕБ-РАЗРАБОТЧИК</div>
+                <h1>BREAKING <span class="blue-text">CODE</span></h1>
+                <p class="hero-subtitle">Превращаю идеи в цифровую реальность</p>
+                <p class="hero-description">Создаю современные, адаптивные веб-сайты с использованием передовых технологий.<br>Качество кода — 99.1%</p>
+                <a href="#projects" class="cta-button">
+                    <i class="fas fa-laptop-code"></i> СМОТРЕТЬ ПРОЕКТЫ
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Проекты -->
+    <section id="projects" class="projects">
+        <div class="container">
+            <h2>МОИ <span class="blue-text">ПРОЕКТЫ</span></h2>
+            <p class="section-subtitle">Реализованные работы, демонстрирующие навыки веб-разработки</p>
+            
+            <div class="projects-grid">
+                <div class="project-card">
+                    <div class="project-badge">HTML/CSS</div>
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>Flexingi Project</h3>
+                        <p>Адаптивный лендинг с использованием Flexbox. Чистый дизайн, кроссбраузерная совместимость.</p>
+                        <a href="https://ila7824292024.github.io/flexingi/" target="_blank" class="project-button">
+                            <i class="fas fa-external-link-alt"></i> ПЕРЕЙТИ К ПРОЕКТУ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-badge">JavaScript</div>
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1627398242454-45a1465c2479?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>Ila782429 Project</h3>
+                        <p>Интерактивный сайт с элементами JavaScript. Анимации, взаимодействие с пользователем.</p>
+                        <a href="https://ila7824292024.github.io/ila782429/" target="_blank" class="project-button">
+                            <i class="fas fa-external-link-alt"></i> ПЕРЕЙТИ К ПРОЕКТУ
+                        </a>
+                    </div>
+                </div>
+
+                <div class="project-card">
+                    <div class="project-badge">Первый проект</div>
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>First Project</h3>
+                        <p>Мой первый веб-проект. Основы HTML и CSS, семантическая верстка, базовые стили.</p>
+                        <a href="https://ila7824292024.github.io/first/" target="_blank" class="project-button">
+                            <i class="fas fa-external-link-alt"></i> ПЕРЕЙТИ К ПРОЕКТУ
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Обо мне -->
+    <section class="about">
+        <div class="container">
+            <div class="about-content">
+                <div class="about-text">
+                    <h2>ОБО <span class="blue-text">МНЕ</span></h2>
+                    <p>Меня зовут Илья Курбанов, я начинающий веб-разработчик. Увлекаюсь созданием современных и функциональных веб-сайтов.</p>
+                    <p>В своей работе стремлюсь к чистоте кода, адаптивности и пользовательскому опыту. Постоянно изучаю новые технологии и совершенствую свои навыки.</p>
+                    <p>Данный сайт является дипломной работой и демонстрирует мои умения в области веб-разработки.</p>
+                    
+                    <h3 style="margin-top: 30px; color: var(--yellow);">Навыки:</h3>
+                    <div class="skills">
+                        <div class="skill">HTML5</div>
+                        <div class="skill">CSS3</div>
+                        <div class="skill">JavaScript</div>
+                        <div class="skill">Адаптивный дизайн</div>
+                        <div class="skill">Git</div>
+                        <div class="skill">Figma</div>
+                    </div>
+                </div>
+                <div class="about-image"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Контакты -->
+    <section class="contact">
+        <div class="container">
+            <h2>КОНТАКТЫ</h2>
+            <p class="section-subtitle">Свяжитесь со мной для сотрудничества</p>
+            
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope contact-icon"></i>
+                    <span>example@mail.com</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone contact-icon"></i>
+                    <span>+7 (XXX) XXX-XX-XX</span>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt contact-icon"></i>
+                    <span>Россия</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Футер -->
+    <footer>
+        <div class="container">
+            <h3>BREAKING <span class="blue-text">CODE</span></h3>
+            <p>Дипломная работа Курбанова Ильи</p>
+            <div class="footer-links">
+                <a href="#projects">Проекты</a>
+                <a href="#about">Обо мне</a>
+                <a href="#contact">Контакты</a>
+            </div>
+            <p class="copyright">© 2023 Дипломная работа Курбанова Ильи. Все права защищены.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Плавная прокрутка к проектам
+        document.querySelector('a[href="#projects"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('projects').scrollIntoView({ 
+                behavior: 'smooth' 
+            });
+        });
+
+        // Анимация появления элементов при скролле
+        document.addEventListener('DOMContentLoaded', function() {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: '0px 0px -50px 0px'
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = '1';
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, observerOptions);
+
+            // Наблюдаем за карточками проектов
+            document.querySelectorAll('.project-card, .about-content').forEach(el => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                el.style.transition = 'all 0.6s ease';
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
