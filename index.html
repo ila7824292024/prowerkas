@@ -102,12 +102,32 @@
             color: var(--yellow);
             text-transform: uppercase;
             letter-spacing: 2px;
+            margin-bottom: 10px;
         }
 
         .diploma-header p {
             color: #ccc;
             margin-top: 5px;
             font-size: 1rem;
+        }
+
+        .diploma-link {
+            display: inline-block;
+            background: var(--green);
+            color: white;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .diploma-link:hover {
+            background: transparent;
+            border-color: var(--green);
+            transform: translateY(-2px);
         }
 
         /* Hero секция */
@@ -427,6 +447,9 @@
     <header class="diploma-header">
         <div class="container">
             <h1>Дипломная работа Курбанова Ильи</h1>
+            <a href="https://ila7824292024.github.io/-/" target="_blank" class="diploma-link">
+                <i class="fas fa-external-link-alt"></i> ПЕРЕЙТИ К ДИПЛОМНОЙ РАБОТЕ
+            </a>
             <p>Тема: "Разработка веб-портфолио в стиле Breaking Bad"</p>
         </div>
     </header>
@@ -563,6 +586,7 @@
                 <a href="#projects">Проекты</a>
                 <a href="#about">Обо мне</a>
                 <a href="#contact">Контакты</a>
+                <a href="https://ila7824292024.github.io/-/" target="_blank">Дипломная работа</a>
             </div>
             <p class="copyright">© 2025 Дипломная работа Курбанова Ильи. Все права защищены.</p>
         </div>
