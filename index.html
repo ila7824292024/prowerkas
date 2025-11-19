@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дипломная работа Курбанова Ильи | Breaking Code</title>
+    <title>Дипломная работа Курбанова Ильи | Веб-разработчик</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -22,13 +22,22 @@
             --dark: #0d0d0d;
             --gray: #1a1a1a;
             --light-gray: #333333;
+            --white: #ffffff;
+            --light-bg: #f5f5f5;
+            --border: #e0e0e0;
         }
 
         body {
-            background-color: var(--dark);
-            color: #fff;
+            background-color: var(--white);
+            color: #333;
             line-height: 1.6;
             overflow-x: hidden;
+            transition: all 0.3s ease;
+        }
+
+        body.dark-theme {
+            background-color: var(--dark);
+            color: #fff;
         }
 
         .container {
@@ -38,90 +47,58 @@
             padding: 0 15px;
         }
 
-        /* Химические эффекты */
-        .lab-effects {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            z-index: -1;
-        }
-
-        .bubble {
-            position: absolute;
-            background: rgba(26, 117, 255, 0.1);
-            border-radius: 50%;
-            animation: float 15s infinite linear;
-        }
-
-        .bubble:nth-child(1) {
-            width: 100px;
-            height: 100px;
-            top: 10%;
-            left: 10%;
-            animation-delay: 0s;
-        }
-
-        .bubble:nth-child(2) {
-            width: 150px;
-            height: 150px;
-            top: 60%;
-            left: 80%;
-            animation-delay: 5s;
-        }
-
-        .bubble:nth-child(3) {
-            width: 80px;
-            height: 80px;
-            top: 80%;
-            left: 20%;
-            animation-delay: 10s;
-        }
-
-        @keyframes float {
-            0% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-20px) rotate(180deg); }
-            100% { transform: translateY(0) rotate(360deg); }
-        }
-
         /* Дипломная надпись */
         .diploma-header {
-            background: var(--gray);
-            padding: 15px 0;
+            background: var(--white);
+            padding: 25px 0;
             text-align: center;
-            border-bottom: 2px solid var(--blue);
+            border-bottom: 3px solid var(--blue);
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .diploma-header {
+            background: var(--gray);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.3);
         }
 
         .diploma-header h1 {
-            font-size: 1.8rem;
-            color: var(--yellow);
+            font-size: 2.8rem;
+            color: var(--blue);
             text-transform: uppercase;
             letter-spacing: 2px;
-            margin-bottom: 10px;
+            margin-bottom: 15px;
+        }
+
+        .dark-theme .diploma-header h1 {
+            color: var(--yellow);
         }
 
         .diploma-header p {
+            color: #666;
+            margin-top: 10px;
+            font-size: 1.3rem;
+        }
+
+        .dark-theme .diploma-header p {
             color: #ccc;
-            margin-top: 5px;
-            font-size: 1rem;
         }
 
         .diploma-link {
             display: inline-block;
             background: var(--green);
             color: white;
-            padding: 10px 20px;
+            padding: 12px 25px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 10px;
+            margin-top: 15px;
             transition: all 0.3s ease;
             border: 2px solid transparent;
+            font-size: 1.1rem;
+            margin: 0 10px;
         }
 
         .diploma-link:hover {
@@ -130,9 +107,31 @@
             transform: translateY(-2px);
         }
 
+        .theme-toggle {
+            display: inline-block;
+            background: var(--blue);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            margin-top: 15px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            font-size: 1.1rem;
+            cursor: pointer;
+            margin: 0 10px;
+        }
+
+        .theme-toggle:hover {
+            background: transparent;
+            border-color: var(--blue);
+            transform: translateY(-2px);
+        }
+
         /* Hero секция */
         .hero {
-            background: linear-gradient(rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.7)), 
+            background: linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.7)), 
                         url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
             background-size: cover;
             background-position: center;
@@ -141,6 +140,11 @@
             align-items: center;
             text-align: center;
             position: relative;
+        }
+
+        .dark-theme .hero {
+            background: linear-gradient(rgba(13, 13, 13, 0.9), rgba(13, 13, 13, 0.7)), 
+                        url('https://images.unsplash.com/photo-1532094349884-543bc11b234d?ixlib=rb-4.0.3&auto=format&fit=crop&w=2070&q=80');
         }
 
         .hero-content {
@@ -152,10 +156,10 @@
             display: inline-block;
             background: var(--red);
             color: white;
-            padding: 8px 15px;
+            padding: 10px 20px;
             border-radius: 30px;
             font-weight: bold;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
             animation: pulse 2s infinite;
         }
 
@@ -166,10 +170,15 @@
         }
 
         h1 {
-            font-size: 4rem;
-            margin-bottom: 15px;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
             text-transform: uppercase;
             letter-spacing: 2px;
+            color: #333;
+        }
+
+        .dark-theme h1 {
+            color: #fff;
         }
 
         .blue-text {
@@ -178,13 +187,21 @@
 
         .hero-subtitle {
             font-size: 1.8rem;
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            color: var(--blue);
+        }
+
+        .dark-theme .hero-subtitle {
             color: var(--yellow);
         }
 
         .hero-description {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
+            font-size: 1.3rem;
+            margin-bottom: 35px;
+            color: #666;
+        }
+
+        .dark-theme .hero-description {
             color: #ccc;
         }
 
@@ -221,12 +238,21 @@
             text-align: center;
             margin-bottom: 20px;
             text-transform: uppercase;
+            color: #333;
+        }
+
+        .dark-theme h2 {
+            color: #fff;
         }
 
         .section-subtitle {
             text-align: center;
             font-size: 1.2rem;
             margin-bottom: 50px;
+            color: #666;
+        }
+
+        .dark-theme .section-subtitle {
             color: #ccc;
         }
 
@@ -239,17 +265,24 @@
         }
 
         .project-card {
-            background: var(--gray);
+            background: var(--white);
             border-radius: 10px;
             overflow: hidden;
             transition: transform 0.3s ease;
             position: relative;
+            border: 1px solid var(--border);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+
+        .dark-theme .project-card {
+            background: var(--gray);
             border: 1px solid var(--light-gray);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
         }
 
         .project-badge {
@@ -277,11 +310,19 @@
         .project-card h3 {
             font-size: 1.5rem;
             margin-bottom: 10px;
+            color: var(--blue);
+        }
+
+        .dark-theme .project-card h3 {
             color: var(--yellow);
         }
 
         .project-card p {
             margin-bottom: 15px;
+            color: #666;
+        }
+
+        .dark-theme .project-card p {
             color: #ccc;
         }
 
@@ -309,6 +350,10 @@
 
         /* Обо мне */
         .about {
+            background: var(--light-bg);
+        }
+
+        .dark-theme .about {
             background: var(--gray);
         }
 
@@ -332,6 +377,10 @@
 
         .about-text p {
             margin-bottom: 20px;
+            color: #666;
+        }
+
+        .dark-theme .about-text p {
             color: #ccc;
         }
 
@@ -343,11 +392,18 @@
         }
 
         .skill {
-            background: var(--dark);
+            background: var(--white);
             padding: 8px 15px;
             border-radius: 20px;
             font-size: 0.9rem;
+            border: 1px solid var(--border);
+            color: #333;
+        }
+
+        .dark-theme .skill {
+            background: var(--dark);
             border: 1px solid var(--light-gray);
+            color: #fff;
         }
 
         /* Контакты */
@@ -368,6 +424,11 @@
             align-items: center;
             gap: 10px;
             font-size: 1.1rem;
+            color: #333;
+        }
+
+        .dark-theme .contact-item {
+            color: #fff;
         }
 
         .contact-icon {
@@ -377,9 +438,14 @@
 
         /* Футер */
         footer {
-            background: var(--gray);
+            background: var(--light-bg);
             padding: 40px 0;
             text-align: center;
+            border-top: 1px solid var(--border);
+        }
+
+        .dark-theme footer {
+            background: var(--gray);
             border-top: 1px solid var(--light-gray);
         }
 
@@ -392,9 +458,13 @@
         }
 
         .footer-links a {
-            color: #ccc;
+            color: #666;
             text-decoration: none;
             transition: color 0.3s ease;
+        }
+
+        .dark-theme .footer-links a {
+            color: #ccc;
         }
 
         .footer-links a:hover {
@@ -403,14 +473,18 @@
 
         .copyright {
             margin-top: 20px;
-            color: #666;
+            color: #999;
             font-size: 0.9rem;
+        }
+
+        .dark-theme .copyright {
+            color: #666;
         }
 
         /* Адаптивность */
         @media (max-width: 768px) {
             .diploma-header h1 {
-                font-size: 1.3rem;
+                font-size: 2rem;
             }
             
             h1 {
@@ -432,17 +506,16 @@
             .contact-info {
                 gap: 20px;
             }
+            
+            .diploma-link, .theme-toggle {
+                display: block;
+                margin: 10px auto;
+                width: 200px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Химическая лаборатория -->
-    <div class="lab-effects">
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-        <div class="bubble"></div>
-    </div>
-
     <!-- Заголовок дипломной работы -->
     <header class="diploma-header">
         <div class="container">
@@ -450,7 +523,13 @@
             <a href="https://ila7824292024.github.io/-/" target="_blank" class="diploma-link">
                 <i class="fas fa-external-link-alt"></i> Светлая тема
             </a>
-            <p>Тема: "Разработка веб-портфолио в стиле Breaking Bad"</p>
+            <a href="https://ila7824292024.github.io/butic/" target="_blank" class="diploma-link">
+                <i class="fas fa-external-link-alt"></i> Проект Butic
+            </a>
+            <button class="theme-toggle" id="themeToggle">
+                <i class="fas fa-moon"></i> Чёрная тема
+            </button>
+            <p>Тема: "Разработка веб-портфолио"</p>
         </div>
     </header>
 
@@ -459,7 +538,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">ВЕБ-РАЗРАБОТЧИК</div>
-                <h1>BREAKING <span class="blue-text">CODE</span></h1>
+                <h1>ПОРТФОЛИО <span class="blue-text">РАЗРАБОТЧИКА</span></h1>
                 <p class="hero-subtitle">Превращаю идеи в цифровую реальность</p>
                 <p class="hero-description">Создаю современные, адаптивные веб-сайты с использованием передовых технологий.<br>Качество кода — 99.1%</p>
                 <a href="#projects" class="cta-button">
@@ -537,7 +616,7 @@
                     <p>В своей работе стремлюсь к чистоте кода, адаптивности и пользовательскому опыту. Постоянно изучаю новые технологии и совершенствую свои навыки.</p>
                     <p>Данный сайт является дипломной работой и демонстрирует мои умения в области веб-разработки.</p>
                     
-                    <h3 style="margin-top: 30px; color: var(--yellow);">Навыки:</h3>
+                    <h3 style="margin-top: 30px; color: var(--blue);">Навыки:</h3>
                     <div class="skills">
                         <div class="skill">HTML5</div>
                         <div class="skill">CSS3</div>
@@ -558,7 +637,7 @@
     <section class="contact">
         <div class="container">
             <h2>КОНТАКТЫ</h2>
-            <p class="section-subtitle">Свяжитесь со мной для сотрудничества</p>
+            <p class="section-subtitle"></p>
             
             <div class="contact-info">
                 <div class="contact-item">
@@ -580,19 +659,34 @@
     <!-- Футер -->
     <footer>
         <div class="container">
-            <h3>BREAKING <span class="blue-text">CODE</span></h3>
+            <h3 style="color: var(--blue);">ПОРТФОЛИО <span class="blue-text">РАЗРАБОТЧИКА</span></h3>
             <p>Дипломная работа Курбанова Ильи</p>
             <div class="footer-links">
                 <a href="#projects">Проекты</a>
                 <a href="#about">Обо мне</a>
                 <a href="#contact">Контакты</a>
                 <a href="https://ila7824292024.github.io/-/" target="_blank">Дипломная работа</a>
+                <a href="https://ila7824292024.github.io/butic/" target="_blank">Проект Butic</a>
             </div>
             <p class="copyright">© 2025 Дипломная работа Курбанова Ильи. Все права защищены.</p>
         </div>
     </footer>
 
     <script>
+        // Переключение темы
+        const themeToggle = document.getElementById('themeToggle');
+        const body = document.body;
+
+        themeToggle.addEventListener('click', function() {
+            body.classList.toggle('dark-theme');
+            
+            if (body.classList.contains('dark-theme')) {
+                themeToggle.innerHTML = '<i class="fas fa-sun"></i> Светлая тема';
+            } else {
+                themeToggle.innerHTML = '<i class="fas fa-moon"></i> Чёрная тема';
+            }
+        });
+
         // Плавная прокрутка к проектам
         document.querySelector('a[href="#projects"]').addEventListener('click', function(e) {
             e.preventDefault();
