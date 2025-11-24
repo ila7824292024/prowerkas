@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Дипломная работа Курбанова Ильи | Веб-разработчик</title>
+    <title>Дипломная работа Курбанова Ильи | Портфолио</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
@@ -50,11 +50,13 @@
         /* Дипломная надпись */
         .diploma-header {
             background: var(--white);
-            padding: 25px 0;
+            padding: 20px 0;
             text-align: center;
-            border-bottom: 3px solid var(--blue);
-            position: sticky;
+            border-bottom: 2px solid var(--blue);
+            position: fixed;
             top: 0;
+            left: 0;
+            right: 0;
             z-index: 100;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
@@ -65,7 +67,7 @@
         }
 
         .diploma-header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: var(--blue);
             text-transform: uppercase;
             letter-spacing: 2px;
@@ -78,55 +80,42 @@
 
         .diploma-header p {
             color: #666;
-            margin-top: 10px;
-            font-size: 1.3rem;
+            margin-top: 5px;
+            font-size: 1.1rem;
         }
 
         .dark-theme .diploma-header p {
             color: #ccc;
         }
 
-        .diploma-link {
-            display: inline-block;
-            background: var(--green);
-            color: white;
-            padding: 12px 25px;
-            border-radius: 5px;
-            text-decoration: none;
-            font-weight: bold;
-            margin-top: 15px;
-            transition: all 0.3s ease;
-            border: 2px solid transparent;
-            font-size: 1.1rem;
-            margin: 0 10px;
-        }
-
-        .diploma-link:hover {
-            background: transparent;
-            border-color: var(--green);
-            transform: translateY(-2px);
-        }
-
         .theme-toggle {
             display: inline-block;
-            background: var(--blue);
+            background: var(--dark);
             color: white;
-            padding: 12px 25px;
+            padding: 10px 20px;
             border-radius: 5px;
             text-decoration: none;
             font-weight: bold;
-            margin-top: 15px;
+            margin-top: 10px;
             transition: all 0.3s ease;
             border: 2px solid transparent;
-            font-size: 1.1rem;
             cursor: pointer;
-            margin: 0 10px;
+        }
+
+        .dark-theme .theme-toggle {
+            background: var(--green);
+            color: var(--dark);
         }
 
         .theme-toggle:hover {
             background: transparent;
-            border-color: var(--blue);
-            transform: translateY(-2px);
+            border-color: var(--dark);
+            color: var(--dark);
+        }
+
+        .dark-theme .theme-toggle:hover {
+            border-color: var(--green);
+            color: var(--green);
         }
 
         /* Hero секция */
@@ -140,6 +129,7 @@
             align-items: center;
             text-align: center;
             position: relative;
+            margin-top: 180px; /* Отступ для фиксированного заголовка */
         }
 
         .dark-theme .hero {
@@ -154,12 +144,12 @@
 
         .hero-badge {
             display: inline-block;
-            background: var(--red);
+            background: var(--blue);
             color: white;
-            padding: 10px 20px;
+            padding: 8px 15px;
             border-radius: 30px;
             font-weight: bold;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             animation: pulse 2s infinite;
         }
 
@@ -170,15 +160,10 @@
         }
 
         h1 {
-            font-size: 3.5rem;
-            margin-bottom: 20px;
+            font-size: 4rem;
+            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 2px;
-            color: #333;
-        }
-
-        .dark-theme h1 {
-            color: #fff;
         }
 
         .blue-text {
@@ -187,7 +172,7 @@
 
         .hero-subtitle {
             font-size: 1.8rem;
-            margin-bottom: 25px;
+            margin-bottom: 20px;
             color: var(--blue);
         }
 
@@ -196,8 +181,8 @@
         }
 
         .hero-description {
-            font-size: 1.3rem;
-            margin-bottom: 35px;
+            font-size: 1.2rem;
+            margin-bottom: 30px;
             color: #666;
         }
 
@@ -238,11 +223,6 @@
             text-align: center;
             margin-bottom: 20px;
             text-transform: uppercase;
-            color: #333;
-        }
-
-        .dark-theme h2 {
-            color: #fff;
         }
 
         .section-subtitle {
@@ -271,25 +251,29 @@
             transition: transform 0.3s ease;
             position: relative;
             border: 1px solid var(--border);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
         }
 
         .dark-theme .project-card {
             background: var(--gray);
             border: 1px solid var(--light-gray);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .project-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+        }
+
+        .dark-theme .project-card:hover {
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.5);
         }
 
         .project-badge {
             position: absolute;
             top: 15px;
             right: 15px;
-            background: var(--red);
+            background: var(--blue);
             color: white;
             padding: 5px 10px;
             border-radius: 3px;
@@ -424,11 +408,6 @@
             align-items: center;
             gap: 10px;
             font-size: 1.1rem;
-            color: #333;
-        }
-
-        .dark-theme .contact-item {
-            color: #fff;
         }
 
         .contact-icon {
@@ -484,11 +463,17 @@
         /* Адаптивность */
         @media (max-width: 768px) {
             .diploma-header h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             
             h1 {
                 font-size: 2.5rem;
+            }
+            
+            .hero {
+                margin-top: 200px;
+                height: auto;
+                padding: 60px 0;
             }
             
             .hero-subtitle {
@@ -506,12 +491,6 @@
             .contact-info {
                 gap: 20px;
             }
-            
-            .diploma-link, .theme-toggle {
-                display: block;
-                margin: 10px auto;
-                width: 200px;
-            }
         }
     </style>
 </head>
@@ -520,12 +499,6 @@
     <header class="diploma-header">
         <div class="container">
             <h1>Дипломная работа Курбанова Ильи</h1>
-            <a href="https://ila7824292024.github.io/-/" target="_blank" class="diploma-link">
-                <i class="fas fa-external-link-alt"></i> Светлая тема
-            </a>
-            <a href="https://ila7824292024.github.io/butic/" target="_blank" class="diploma-link">
-                <i class="fas fa-external-link-alt"></i> Проект Butic
-            </a>
             <button class="theme-toggle" id="themeToggle">
                 <i class="fas fa-moon"></i> Чёрная тема
             </button>
@@ -538,7 +511,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">ВЕБ-РАЗРАБОТЧИК</div>
-                <h1>ПОРТФОЛИО <span class="blue-text">РАЗРАБОТЧИКА</span></h1>
+                <h1>ПОРТФОЛИО</h1>
                 <p class="hero-subtitle">Превращаю идеи в цифровую реальность</p>
                 <p class="hero-description">Создаю современные, адаптивные веб-сайты с использованием передовых технологий.<br>Качество кода — 99.1%</p>
                 <a href="#projects" class="cta-button">
@@ -602,6 +575,18 @@
                         </a>
                     </div>
                 </div>
+
+                <div class="project-card">
+                    <div class="project-badge">HTML/CSS</div>
+                    <div class="project-image" style="background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80');"></div>
+                    <div class="project-content">
+                        <h3>Проект Butic</h3>
+                        <p>Интернет-магазин с адаптивным дизайном и функциональностью корзины покупок.</p>
+                        <a href="https://ila7824292024.github.io/butic/" target="_blank" class="project-button">
+                            <i class="fas fa-external-link-alt"></i> ПЕРЕЙТИ К ПРОЕКТУ
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -637,7 +622,7 @@
     <section class="contact">
         <div class="container">
             <h2>КОНТАКТЫ</h2>
-            <p class="section-subtitle"></p>
+            <p class="section-subtitle">Свяжитесь со мной для сотрудничества</p>
             
             <div class="contact-info">
                 <div class="contact-item">
@@ -659,14 +644,12 @@
     <!-- Футер -->
     <footer>
         <div class="container">
-            <h3 style="color: var(--blue);">ПОРТФОЛИО <span class="blue-text">РАЗРАБОТЧИКА</span></h3>
+            <h3>ПОРТФОЛИО</h3>
             <p>Дипломная работа Курбанова Ильи</p>
             <div class="footer-links">
                 <a href="#projects">Проекты</a>
                 <a href="#about">Обо мне</a>
                 <a href="#contact">Контакты</a>
-                <a href="https://ila7824292024.github.io/-/" target="_blank">Дипломная работа</a>
-                <a href="https://ila7824292024.github.io/butic/" target="_blank">Проект Butic</a>
             </div>
             <p class="copyright">© 2025 Дипломная работа Курбанова Ильи. Все права защищены.</p>
         </div>
@@ -676,8 +659,8 @@
         // Переключение темы
         const themeToggle = document.getElementById('themeToggle');
         const body = document.body;
-
-        themeToggle.addEventListener('click', function() {
+        
+        themeToggle.addEventListener('click', () => {
             body.classList.toggle('dark-theme');
             
             if (body.classList.contains('dark-theme')) {
