@@ -431,6 +431,133 @@
             color: #fff;
         }
 
+        /* Новый раздел: Прайс-лист */
+        .price {
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            padding: 80px 0;
+        }
+
+        .dark-theme .price {
+            background: linear-gradient(135deg, #1a1a1a 0%, #0d0d0d 100%);
+        }
+
+        .price-container {
+            background: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        .dark-theme .price-container {
+            background: var(--gray);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .price-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid var(--border);
+        }
+
+        .dark-theme .price-header {
+            border-bottom: 2px solid var(--light-gray);
+        }
+
+        .price-title {
+            color: var(--blue);
+            font-size: 1.8rem;
+            font-weight: 600;
+        }
+
+        .dark-theme .price-title {
+            color: var(--yellow);
+        }
+
+        .price-update {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .dark-theme .price-update {
+            color: #ccc;
+        }
+
+        .price-sheet-container {
+            width: 100%;
+            height: 600px;
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        .dark-theme .price-sheet-container {
+            border: 1px solid var(--light-gray);
+        }
+
+        .price-actions {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+
+        .price-action-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: var(--green);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .price-action-button:hover {
+            background: transparent;
+            border-color: var(--green);
+            color: var(--green);
+            transform: translateY(-3px);
+        }
+
+        .dark-theme .price-action-button:hover {
+            color: var(--green);
+        }
+
+        .price-action-button.secondary {
+            background: var(--blue);
+        }
+
+        .price-action-button.secondary:hover {
+            border-color: var(--blue);
+            color: var(--blue);
+        }
+
+        .dark-theme .price-action-button.secondary:hover {
+            color: var(--blue);
+        }
+
+        .price-info {
+            background: linear-gradient(45deg, var(--blue), var(--green));
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            margin-top: 30px;
+            text-align: center;
+        }
+
+        .price-info h3 {
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+
         /* Контакты */
         .contact {
             text-align: center;
@@ -584,6 +711,24 @@
                 padding: 6px 12px;
                 font-size: 0.8rem;
             }
+            
+            .price-container {
+                padding: 20px;
+            }
+            
+            .price-sheet-container {
+                height: 400px;
+            }
+            
+            .price-header {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+            
+            .price-title {
+                font-size: 1.5rem;
+            }
         }
     </style>
 </head>
@@ -620,6 +765,9 @@
                 <div style="display: flex; gap: 20px; justify-content: center; margin-top: 20px; flex-wrap: wrap;">
                     <a href="#projects" class="cta-button">
                         <i class="fas fa-laptop-code"></i> СМОТРЕТЬ ПРОЕКТЫ
+                    </a>
+                    <a href="#price" class="cta-button" style="background: linear-gradient(45deg, #ff6600, #ff9900);">
+                        <i class="fas fa-tag"></i> ПРАЙС-ЛИСТ
                     </a>
                     <a href="https://github.com/ila7824292024" target="_blank" class="cta-button" style="background: linear-gradient(45deg, #333, #666);">
                         <i class="fab fa-github"></i> МОЙ GITHUB
@@ -725,6 +873,64 @@
         </div>
     </section>
 
+    <!-- Прайс-лист -->
+    <section id="price" class="price">
+        <div class="container">
+            <h2>ПРАЙС-ЛИСТ</h2>
+            <p class="section-subtitle">Стоимость услуг веб-разработки и дизайна</p>
+            
+            <div class="price-container">
+                <div class="price-header">
+                    <div>
+                        <h3 class="price-title">Актуальные цены на услуги</h3>
+                        <p class="price-update">Последнее обновление: май 2025</p>
+                    </div>
+                    <div>
+                        <a href="https://docs.google.com/spreadsheets/d/1qbV-0Z3sydXIBL2k2Ngbvbo9oNYShUPqWpYS6Bls-rU/edit?usp=sharing" 
+                           target="_blank" 
+                           class="price-action-button">
+                            <i class="fas fa-external-link-alt"></i> Открыть в Google Sheets
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="price-sheet-container">
+                    <iframe 
+                        src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTVXKt0MFPLfzGZ-FdvNSiqS0YhdfOwwfWfg_MM5kOuc9Yt3QfBtgU_Z-4ilOrb5f_UTaP8RgokcQfL/pubhtml?widget=true&amp;headers=false"
+                        width="100%"
+                        height="100%"
+                        frameborder="0"
+                        style="border: none;">
+                    </iframe>
+                </div>
+                
+                <div class="price-actions">
+                    <a href="https://docs.google.com/spreadsheets/d/1qbV-0Z3sydXIBL2k2Ngbvbo9oNYShUPqWpYS6Bls-rU/edit?usp=sharing" 
+                       target="_blank"
+                       class="price-action-button secondary">
+                        <i class="fas fa-edit"></i> Редактировать прайс
+                    </a>
+                    <a href="https://docs.google.com/spreadsheets/d/1qbV-0Z3sydXIBL2k2Ngbvbo9oNYShUPqWpYS6Bls-rU/export?format=xlsx" 
+                       target="_blank"
+                       class="price-action-button">
+                        <i class="fas fa-download"></i> Скачать Excel
+                    </a>
+                    <a href="https://docs.google.com/spreadsheets/d/1qbV-0Z3sydXIBL2k2Ngbvbo9oNYShUPqWpYS6Bls-rU/export?format=pdf" 
+                       target="_blank"
+                       class="price-action-button secondary">
+                        <i class="fas fa-file-pdf"></i> Скачать PDF
+                    </a>
+                </div>
+                
+                <div class="price-info">
+                    <h3>💡 Как пользоваться прайс-листом?</h3>
+                    <p>Прайс-лист интерактивный - вы можете увидеть актуальные цены, а также скачать его в удобном формате.</p>
+                    <p>Все цены указаны в рублях. Для расчета индивидуального проекта свяжитесь со мной.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- Обо мне -->
     <section class="about">
         <div class="container">
@@ -790,6 +996,9 @@
                 <a href="https://ila7824292024.github.io/-/" target="_blank" class="social-link website">
                     <i class="fas fa-globe"></i> Основной сайт
                 </a>
+                <a href="#price" class="social-link" style="background: linear-gradient(45deg, #ff6600, #ff9900);">
+                    <i class="fas fa-tag"></i> Прайс-лист
+                </a>
             </div>
         </div>
     </section>
@@ -801,6 +1010,7 @@
             <p>Дипломная работа Курбанова Ильи</p>
             <div class="footer-links">
                 <a href="#projects">Проекты</a>
+                <a href="#price">Прайс-лист</a>
                 <a href="#about">Обо мне</a>
                 <a href="#contact">Контакты</a>
                 <a href="https://github.com/ila7824292024" target="_blank">
@@ -829,11 +1039,19 @@
             }
         });
 
-        // Плавная прокрутка к проектам
-        document.querySelector('a[href="#projects"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.getElementById('projects').scrollIntoView({ 
-                behavior: 'smooth' 
+        // Плавная прокрутка к секциям
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href === '#') return;
+                
+                e.preventDefault();
+                const target = document.querySelector(href);
+                if (target) {
+                    target.scrollIntoView({ 
+                        behavior: 'smooth' 
+                    });
+                }
             });
         });
 
@@ -853,13 +1071,23 @@
                 });
             }, observerOptions);
 
-            // Наблюдаем за карточками проектов
-            document.querySelectorAll('.project-card, .about-content').forEach(el => {
+            // Наблюдаем за карточками проектов и прайс-листом
+            document.querySelectorAll('.project-card, .about-content, .price-container').forEach(el => {
                 el.style.opacity = '0';
                 el.style.transform = 'translateY(20px)';
                 el.style.transition = 'all 0.6s ease';
                 observer.observe(el);
             });
+            
+            // Автоматическое обновление даты в прайс-листе
+            const updateDate = document.querySelector('.price-update');
+            if (updateDate) {
+                const now = new Date();
+                const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня', 
+                              'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+                const formattedDate = `${now.getDate()} ${months[now.getMonth()]} ${now.getFullYear()}`;
+                updateDate.textContent = `Последнее обновление: ${formattedDate}`;
+            }
         });
     </script>
 </body>
